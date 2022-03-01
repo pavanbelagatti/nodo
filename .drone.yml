@@ -1,24 +1,9 @@
 kind: pipeline
 name: default
+
 steps:
-  - name: test
-    image: node:10.14.2
-    commands:
-      - npm install
-      - npm run test
-    when:
-      event:
-        - push
-        - pull_request
-- name: build-docker-image
-    image: alpine
-    err_ignore: true
-    commands:
-      - echo Building image
-    when:
-      event:
-        - push
-      branch:
-        - master
-        - stage
-        - development
+- name: test
+  image: node
+  commands:
+  - npm install
+  - npm test
